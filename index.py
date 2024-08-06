@@ -6,9 +6,17 @@ import pandas as pd
 app = Flask(__name__)
 CORS(app)  # Esto habilita CORS para todas las rutas
 
+
+
 # Cargar el modelo
 with open('random_forest.pkl', 'rb') as file:
     model = pickle.load(file)
+
+
+@app.route('/')
+def Home():
+    return 'La pagina prende'
+        
 
 @app.route('/predict', methods=['POST'])
 def predict():
